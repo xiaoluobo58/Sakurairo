@@ -19,3 +19,10 @@
 - 前端翻译域为 `sakurairo`，主题设置翻译域为 `sakurairo_csf`。
 - `nav_user_menu_shuoshuo` 默认关闭，开启后为桌面头像菜单中的管理员显示“撰写说说”。
 - 按改动范围做必要验证：有 PHP 环境时对修改文件执行 `php -l`；设置修改检查字段注册、保存值和前端读取的对应关系。线上界面由用户上传服务器验证。
+
+## Git 规范
+
+- 新分支使用简洁的功能名称，例如 `nav-shuoshuo-menu`，不使用 `codex/` 前缀。
+- Git 提交的作者（Author）和提交者（Committer）均使用用户身份 `Misaka <xiaoluobo58@gmail.com>`，提交前核对 `git config user.name` 和 `git config user.email`。
+- 不使用 Codex 身份提交，也不添加 Codex 署名或 `Co-authored-by` 信息。
+- 专供上游 PR 的分支只包含本次功能修改，不加入 `AGENTS.md`；本文件的规范更新提交到 `main`。

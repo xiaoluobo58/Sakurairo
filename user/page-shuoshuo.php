@@ -49,17 +49,15 @@ get_header();
                                     <?php echo get_avatar(get_the_author_meta('ID'), 48, '', get_the_author(), array('loading' => 'lazy')); ?>
                                 </a>
                                 <div>
-                                    <div class="iro-shuoshuo-author-line">
-                                        <a class="iro-shuoshuo-author" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"><?php echo esc_html(get_the_author()); ?></a>
-                                        <?php if ($show_shuoshuo_title && trim(get_the_title()) !== '') : ?>
-                                            <span class="iro-shuoshuo-post-title" title="<?php echo esc_attr(get_the_title()); ?>"><?php echo esc_html(get_the_title()); ?></span>
-                                        <?php endif; ?>
-                                    </div>
+                                    <a class="iro-shuoshuo-author" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"><?php echo esc_html(get_the_author()); ?></a>
                                     <a class="iro-shuoshuo-time" href="<?php the_permalink(); ?>">
                                         <time datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>"><?php echo esc_html(get_the_date() . ' · ' . get_the_time()); ?></time>
                                     </a>
                                 </div>
                             </header>
+                            <?php if ($show_shuoshuo_title && trim(get_the_title()) !== '') : ?>
+                                <h2 class="iro-shuoshuo-post-title"><?php echo esc_html(get_the_title()); ?></h2>
+                            <?php endif; ?>
                             <div class="iro-shuoshuo-body"><?php the_content('', false); ?></div>
                             <footer class="iro-shuoshuo-actions">
                                 <button type="button" class="iro-shuoshuo-toggle" data-iro-comments="<?php echo esc_attr($shuoshuo_id); ?>" aria-expanded="false" aria-controls="shuoshuo-comments-<?php echo esc_attr($shuoshuo_id); ?>">

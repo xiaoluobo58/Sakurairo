@@ -2868,7 +2868,7 @@ $prefix = 'iro_options';
         'id' => 'shuoshuo_show_title',
         'type' => 'switcher',
         'title' => __('显示说说标题', 'sakurairo_csf'),
-        'label' => __('默认开启，在说说页面的作者昵称旁以浅色显示标题。', 'sakurairo_csf'),
+        'label' => __('默认开启，在说说页面的头像下方显示标题。', 'sakurairo_csf'),
         'default' => true,
       ),
 

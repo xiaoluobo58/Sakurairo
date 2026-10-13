@@ -2859,8 +2859,49 @@ $prefix = 'iro_options';
         'id' => 'shuoshuo_show_title',
         'type' => 'switcher',
         'title' => __('显示说说标题', 'sakurairo_csf'),
-        'label' => __('默认开启，在说说页面的头像下方显示标题。', 'sakurairo_csf'),
+        'label' => __('默认开启，在说说页面显示每条说说的标题。', 'sakurairo_csf'),
         'default' => true,
+      ),
+
+      array(
+        'id' => 'shuoshuo_title_position',
+        'type' => 'radio',
+        'title' => __('标题位置', 'sakurairo_csf'),
+        'inline' => true,
+        'dependency' => array('shuoshuo_show_title', '==', 'true', '', 'true'),
+        'options' => array(
+          'beside_name' => __('昵称旁', 'sakurairo_csf'),
+          'below_avatar' => __('头像下', 'sakurairo_csf'),
+        ),
+        'default' => 'below_avatar',
+      ),
+
+      array(
+        'id' => 'shuoshuo_title_size',
+        'type' => 'radio',
+        'title' => __('标题字号', 'sakurairo_csf'),
+        'inline' => true,
+        'dependency' => array('shuoshuo_show_title', '==', 'true', '', 'true'),
+        'options' => array(
+          'small' => __('小', 'sakurairo_csf'),
+          'standard' => __('标准', 'sakurairo_csf'),
+          'large' => __('大', 'sakurairo_csf'),
+        ),
+        'default' => 'standard',
+      ),
+
+      array(
+        'id' => 'shuoshuo_title_style',
+        'type' => 'radio',
+        'title' => __('标题文字样式', 'sakurairo_csf'),
+        'inline' => true,
+        'dependency' => array('shuoshuo_show_title', '==', 'true', '', 'true'),
+        'options' => array(
+          'light' => __('浅色', 'sakurairo_csf'),
+          'standard' => __('标准', 'sakurairo_csf'),
+          'bold' => __('加粗', 'sakurairo_csf'),
+        ),
+        'default' => 'bold',
       ),
 
     array(

@@ -15,13 +15,13 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-/** CPT：隐藏默认菜单，精简 supports（不与分类/评论绑定） */
+/** CPT：隐藏默认菜单，保留说说页面所需的原生评论支持。 */
 add_filter('register_post_type_args', function ($args, $post_type) {
     if ($post_type !== 'shuoshuo') {
         return $args;
     }
     $args['show_in_menu'] = false;
-    $args['supports'] = array('editor', 'author', 'thumbnail', 'custom-fields');
+    $args['supports'] = array('editor', 'author', 'thumbnail', 'custom-fields', 'comments');
     $args['taxonomies'] = array();
     return $args;
 }, 10, 2);

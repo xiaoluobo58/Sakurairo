@@ -1,0 +1,154 @@
+/* Shuoshuo feed: keep every override within the page template. */
+.iro-shuoshuo-feed {
+    --shuoshuo-text: #505050;
+    --shuoshuo-muted: #898989;
+    --shuoshuo-accent: var(--theme-skin-matching, #e18b9d);
+    --shuoshuo-surface: rgba(255, 255, 255, .72);
+    --shuoshuo-inset: rgba(245, 245, 245, .65);
+    --shuoshuo-line: rgba(140, 140, 140, .16);
+    --shuoshuo-shadow: 0 3px 24px -9px rgba(80, 80, 80, .18);
+    width: 100%;
+    max-width: 760px;
+    margin: 36px auto 64px;
+    color: var(--shuoshuo-text);
+    overflow-wrap: anywhere;
+}
+
+body.dark .iro-shuoshuo-feed {
+    --shuoshuo-text: var(--dark-text-primary, #ccc);
+    --shuoshuo-muted: var(--dark-text-secondary, #999);
+    --shuoshuo-accent: var(--theme-skin-dark, #e5a0b0);
+    --shuoshuo-surface: var(--dark-bg-secondary, #1a1a1a);
+    --shuoshuo-inset: rgba(255, 255, 255, .035);
+    --shuoshuo-line: var(--dark-border-color, #7d7d7d30);
+    --shuoshuo-shadow: var(--dark-shadow-normal, 0 3px 24px #0003);
+}
+
+.iro-shuoshuo-feed [hidden] { display: none !important; }
+.iro-shuoshuo-feed *, .iro-shuoshuo-feed *::before, .iro-shuoshuo-feed *::after { box-sizing: border-box; }
+
+.iro-shuoshuo-heading { margin: 0 4px 30px; }
+.iro-shuoshuo-heading .iro-shuoshuo-eyebrow { margin: 0 0 8px; color: var(--shuoshuo-accent); font-size: 12px; letter-spacing: .12em; }
+.iro-shuoshuo-heading h1 { margin: 0 0 12px; color: var(--shuoshuo-text); font-size: clamp(26px, 4vw, 34px); font-weight: var(--global-font-weight, 500); }
+.iro-shuoshuo-intro { color: var(--shuoshuo-muted); font-size: 14px; line-height: 1.9; }
+.iro-shuoshuo-intro > :first-child { margin-top: 0; }
+.iro-shuoshuo-intro > :last-child { margin-bottom: 0; }
+.iro-shuoshuo-count { display: inline-block; margin-top: 16px; color: var(--shuoshuo-muted); font-size: 12px; }
+
+.iro-shuoshuo-feed .iro-shuoshuo-stream.entry-content { margin: 0; padding: 0; color: var(--shuoshuo-text); font-size: 15px; }
+.iro-shuoshuo-card { min-width: 0; margin: 0 0 20px; padding: 26px 28px 0; border: 1px solid var(--shuoshuo-line); border-radius: 16px; background: var(--shuoshuo-surface); box-shadow: var(--shuoshuo-shadow); }
+.iro-shuoshuo-meta { display: flex; align-items: center; gap: 12px; min-width: 0; margin-bottom: 18px; }
+.iro-shuoshuo-meta > :last-child { min-width: 0; }
+.iro-shuoshuo-avatar { flex: 0 0 44px; line-height: 0; }
+.iro-shuoshuo-feed .iro-shuoshuo-avatar img { display: block; width: 44px; height: 44px; margin: 0; border-radius: 50%; object-fit: cover; }
+.iro-shuoshuo-author { display: block; color: var(--shuoshuo-text); font-size: 15px; font-weight: 600; line-height: 1.5; }
+.iro-shuoshuo-feed .iro-shuoshuo-time { display: block; margin-top: 3px; color: var(--shuoshuo-muted); font-size: 12px; line-height: 1.5; text-decoration: none; }
+
+.iro-shuoshuo-body { min-width: 0; font-size: 15px; line-height: 1.9; }
+.iro-shuoshuo-feed .iro-shuoshuo-body p { margin: 0 0 14px; color: var(--shuoshuo-text); font-size: inherit; line-height: inherit; }
+.iro-shuoshuo-body > :last-child { margin-bottom: 0; }
+.iro-shuoshuo-body a { overflow-wrap: anywhere; }
+.iro-shuoshuo-body :is(img, video, iframe, embed, object, figure, .wp-block-gallery) { max-width: 100%; }
+.iro-shuoshuo-body :is(img, video) { height: auto; border-radius: 10px; }
+.iro-shuoshuo-body figure { margin: 16px 0; }
+.iro-shuoshuo-body :is(audio, iframe) { width: 100%; }
+.iro-shuoshuo-body :is(.alignwide, .alignfull) { width: 100%; max-width: 100%; margin-left: 0; margin-right: 0; }
+.iro-shuoshuo-body :is(pre, .highlight-wrap, .wp-block-table) { max-width: 100%; overflow-x: auto; }
+.iro-shuoshuo-body pre { white-space: pre; overflow-wrap: normal; }
+.iro-shuoshuo-body > table { display: block; max-width: 100%; overflow-x: auto; }
+.iro-shuoshuo-body :is(ul, ol) { padding: 6px 8px 6px 24px; }
+.iro-shuoshuo-body :is(ul, ol) li { padding-top: 4px; }
+.iro-shuoshuo-body blockquote { margin: 16px 0; padding: 10px 18px; }
+
+.iro-shuoshuo-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 16px; min-height: 57px; margin-top: 20px; border-top: 1px solid var(--shuoshuo-line); }
+.iro-shuoshuo-feed .iro-shuoshuo-actions :is(button, a) { display: inline-flex; align-items: center; gap: 7px; margin: 0; padding: 8px 0; border: 0; border-radius: 5px; background: none; box-shadow: none; color: var(--shuoshuo-muted); font: inherit; font-size: 12px; line-height: 1.5; text-decoration: none; cursor: pointer; }
+.iro-shuoshuo-feed .iro-shuoshuo-actions :is(button, a):hover,
+.iro-shuoshuo-feed .iro-shuoshuo-toggle[aria-expanded="true"],
+.iro-shuoshuo-feed .iro-shuoshuo-toggle.is-open { color: var(--shuoshuo-accent); }
+.iro-shuoshuo-feed .iro-shuoshuo-permalink { margin-left: auto; }
+.iro-shuoshuo-feed :is(button, a, input, textarea):focus-visible { outline: 2px solid var(--shuoshuo-accent); outline-offset: 4px; }
+.iro-shuoshuo-feed :is(button, input):disabled { opacity: .55; cursor: wait; }
+
+.iro-shuoshuo-panel { margin: 0 -28px; padding: 22px 28px 26px; border-top: 1px solid var(--shuoshuo-line); border-radius: 0 0 16px 16px; background: var(--shuoshuo-inset); }
+.iro-shuoshuo-feed :is(.iro-shuoshuo-status, .iro-shuoshuo-form-status, .iro-shuoshuo-comments-closed, .iro-shuoshuo-comments-empty) { margin: 0; padding: 14px 0; color: var(--shuoshuo-muted); font-size: 13px; line-height: 1.7; }
+.iro-shuoshuo-feed :is(.iro-shuoshuo-status, .iro-shuoshuo-form-status).is-error { color: #b84654; }
+body.dark .iro-shuoshuo-feed :is(.iro-shuoshuo-status, .iro-shuoshuo-form-status).is-error { color: #f397a3 !important; }
+
+/* The stream is entry-content for the theme lightbox; undo article list styles here. */
+.iro-shuoshuo-feed .iro-shuoshuo-comments-list,
+.iro-shuoshuo-feed .iro-shuoshuo-comments-list .children { display: block; margin: 0; padding: 0; border: 0; border-radius: 0; background: none; color: var(--shuoshuo-text); list-style: none; }
+.iro-shuoshuo-feed .iro-shuoshuo-comments-list li { margin: 0; padding: 15px 0; border-bottom: 1px solid var(--shuoshuo-line); list-style: none; cursor: auto; }
+.iro-shuoshuo-feed .iro-shuoshuo-comments-list > li:first-child { padding-top: 0; }
+.iro-shuoshuo-feed .iro-shuoshuo-comments-list > li:last-child { border-bottom: 0; }
+.iro-shuoshuo-feed .iro-shuoshuo-comments-list .children { margin: 14px 0 0 12px; padding-left: 14px; border-left: 2px solid var(--shuoshuo-line); }
+.iro-shuoshuo-feed .iro-shuoshuo-comments-list .children .children { margin-left: 0; padding-left: 0; border-left: 0; }
+.iro-shuoshuo-feed .iro-shuoshuo-comments-list .iro-shuoshuo-comment--reply { padding-left: 18px; }
+.iro-shuoshuo-comment-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 9px; min-width: 0; margin-bottom: 8px; font-size: 12px; }
+.iro-shuoshuo-feed .iro-shuoshuo-comment-avatar { flex-shrink: 0; }
+.iro-shuoshuo-feed .iro-shuoshuo-comment-avatar img,
+.iro-shuoshuo-feed img.iro-shuoshuo-comment-avatar { display: block; width: 28px; height: 28px; margin: 0; border-radius: 50%; object-fit: cover; }
+.iro-shuoshuo-comment-author { color: var(--shuoshuo-text); font-weight: 600; }
+.iro-shuoshuo-comment-time { color: var(--shuoshuo-muted); font-size: 11px; }
+.iro-shuoshuo-feed .iro-shuoshuo-comment-parent { margin: 0 0 6px; color: var(--shuoshuo-muted); font-size: 12px; line-height: 1.6; }
+.iro-shuoshuo-comment-body { min-width: 0; font-size: 13px; line-height: 1.8; }
+.iro-shuoshuo-feed .iro-shuoshuo-comment-body p { margin: 6px 0; color: var(--shuoshuo-text); font-size: inherit; line-height: inherit; }
+.iro-shuoshuo-comment-body :is(img, video) { max-width: 100%; height: auto; border-radius: 6px; }
+.iro-shuoshuo-comment-body :is(pre, table) { display: block; max-width: 100%; overflow-x: auto; }
+.iro-shuoshuo-comment-body :is(ul, ol) { margin: 8px 0; padding: 0 0 0 20px; border: 0; }
+.iro-shuoshuo-comment-body :is(ul, ol) li { padding: 0; border: 0; list-style: inherit; }
+.iro-shuoshuo-feed .iro-shuoshuo-panel button { padding: 6px 10px; border: 1px solid var(--shuoshuo-line); border-radius: 7px; background: var(--shuoshuo-surface); color: var(--shuoshuo-text); box-shadow: none; font: inherit; font-size: 12px; line-height: 1.5; cursor: pointer; }
+.iro-shuoshuo-feed .iro-shuoshuo-panel button:hover { border-color: var(--shuoshuo-accent); color: var(--shuoshuo-accent); }
+.iro-shuoshuo-feed .iro-shuoshuo-comment-reply { margin-top: 7px; }
+.iro-shuoshuo-comment-pagination { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 16px; color: var(--shuoshuo-muted); font-size: 12px; }
+
+.iro-shuoshuo-feed .iro-shuoshuo-panel .comment-respond { width: 100% !important; max-width: none; margin: 22px 0 0; padding: 20px 0 0; border: 0; border-top: 1px solid var(--shuoshuo-line); border-radius: 0; background: none; box-shadow: none; }
+.iro-shuoshuo-feed .iro-shuoshuo-panel .iro-shuoshuo-form-title { display: block; margin: 0 0 16px; padding: 0; border: 0; color: var(--shuoshuo-text); font-size: 16px; font-weight: var(--global-font-weight, 500); }
+.iro-shuoshuo-feed .iro-shuoshuo-panel .iro-shuoshuo-form-title::before,
+.iro-shuoshuo-feed .iro-shuoshuo-panel .iro-shuoshuo-form-title::after { display: none; }
+.iro-shuoshuo-feed .iro-shuoshuo-form { display: flex; flex-wrap: wrap; gap: 14px; margin: 0; padding: 0; }
+.iro-shuoshuo-feed .iro-shuoshuo-form > * { min-width: 0; max-width: 100%; }
+.iro-shuoshuo-feed .iro-shuoshuo-form > p { flex-basis: 100%; margin: 0; color: var(--shuoshuo-muted); font-size: 12px; line-height: 1.7; }
+.iro-shuoshuo-feed .iro-shuoshuo-form :is(.comment-form-author, .comment-form-email, .comment-form-url) { flex: 1 1 160px; }
+.iro-shuoshuo-feed .iro-shuoshuo-form label { display: block; margin: 0 0 6px; color: var(--shuoshuo-muted); font-size: 12px; }
+.iro-shuoshuo-feed .iro-shuoshuo-form :is(input[type="text"], input[type="email"], input[type="url"], textarea) { display: block; float: none; width: 100%; min-width: 0; max-width: 100%; margin: 0; padding: 10px 12px; border: 1px solid var(--shuoshuo-line); border-radius: 8px; background: var(--shuoshuo-surface); color: var(--shuoshuo-text); box-shadow: none; font: inherit; font-size: 13px; line-height: 1.7; }
+.iro-shuoshuo-feed .iro-shuoshuo-form textarea { min-height: 120px; resize: vertical; }
+.iro-shuoshuo-feed .iro-shuoshuo-form :is(input, textarea):focus { border-color: var(--shuoshuo-accent); box-shadow: none; }
+.iro-shuoshuo-feed .iro-shuoshuo-form :is(.comment-form-cookies-consent, .iro-shuoshuo-comment-options) label { display: inline; margin: 0; }
+.iro-shuoshuo-feed .iro-shuoshuo-form input[type="checkbox"] { display: inline-block; width: auto; height: auto; margin: 0 5px 0 0; padding: 0; vertical-align: middle; accent-color: var(--shuoshuo-accent); }
+.iro-shuoshuo-feed .iro-shuoshuo-comment-options { display: flex; flex-basis: 100%; align-items: center; flex-wrap: wrap; gap: 8px 16px; color: var(--shuoshuo-muted); font-size: 12px; }
+.iro-shuoshuo-feed .iro-shuoshuo-form .form-submit { text-align: right; }
+.iro-shuoshuo-feed .iro-shuoshuo-form input[type="submit"] { float: none; width: auto; max-width: 100%; margin: 0; padding: 10px 22px; border: 1px solid var(--shuoshuo-accent); border-radius: 9px; background: var(--shuoshuo-accent); color: #fff; box-shadow: none; font: inherit; font-size: 13px; line-height: 1.5; cursor: pointer; }
+.iro-shuoshuo-feed .iro-shuoshuo-form input[type="submit"]:hover { filter: brightness(.95); transform: translateY(-1px); }
+.iro-shuoshuo-feed [data-iro-reply-status] { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; width: 100%; margin: 0 0 12px; color: var(--shuoshuo-muted); font-size: 12px; }
+.iro-shuoshuo-captcha { flex-basis: 100%; max-width: 100%; }
+.iro-shuoshuo-captcha-fields { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.iro-shuoshuo-feed .iro-shuoshuo-captcha-fields button { flex: 0 0 auto; padding: 3px; line-height: 0; }
+.iro-shuoshuo-feed .iro-shuoshuo-captcha-fields img { display: block; width: 120px; height: 40px; margin: 0; border-radius: 4px; }
+.iro-shuoshuo-feed .iro-shuoshuo-form .iro-shuoshuo-captcha-fields input { flex: 1 1 130px; width: auto; max-width: 250px; }
+
+.iro-shuoshuo-pagination { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+.iro-shuoshuo-feed .iro-shuoshuo-pagination .page-numbers { display: inline-flex; flex: 0 0 auto; justify-content: center; align-items: center; width: auto; height: auto; min-width: 36px; min-height: 36px; margin: 0; padding: 6px 11px; border: 1px solid var(--shuoshuo-line); border-radius: 9px; background: var(--shuoshuo-surface); color: var(--shuoshuo-muted); font-size: 13px; text-decoration: none; white-space: nowrap; }
+.iro-shuoshuo-feed .iro-shuoshuo-pagination .current,
+.iro-shuoshuo-feed .iro-shuoshuo-pagination a:hover { border-color: var(--shuoshuo-accent); color: var(--shuoshuo-accent); }
+.iro-shuoshuo-feed .iro-shuoshuo-pagination .dots { min-width: 16px; padding: 0; border: 0; background: none; }
+.iro-shuoshuo-empty { padding: 52px 24px; border: 1px solid var(--shuoshuo-line); border-radius: 16px; background: var(--shuoshuo-surface); color: var(--shuoshuo-muted); text-align: center; font-size: 14px; line-height: 1.8; }
+
+@media (max-width: 600px) {
+    .iro-shuoshuo-feed { margin: 24px auto 40px; }
+    .iro-shuoshuo-heading { margin: 0 0 24px; }
+    .iro-shuoshuo-card { margin-bottom: 14px; padding: 19px 17px 0; border-radius: 12px; }
+    .iro-shuoshuo-meta { gap: 10px; margin-bottom: 15px; }
+    .iro-shuoshuo-avatar { flex-basis: 38px; }
+    .iro-shuoshuo-feed .iro-shuoshuo-avatar img { width: 38px; height: 38px; }
+    .iro-shuoshuo-body { font-size: 14px; }
+    .iro-shuoshuo-actions { gap: 5px 13px; min-height: 53px; margin-top: 16px; }
+    .iro-shuoshuo-panel { margin: 0 -17px; padding: 18px 17px 20px; border-radius: 0 0 12px 12px; }
+    .iro-shuoshuo-feed .iro-shuoshuo-form :is(.comment-form-author, .comment-form-email, .comment-form-url) { flex-basis: 100%; }
+    .iro-shuoshuo-feed .iro-shuoshuo-form :is(input[type="text"], input[type="email"], input[type="url"], textarea) { font-size: 16px; }
+    .iro-shuoshuo-feed .iro-shuoshuo-comments-list .children { margin-left: 4px; padding-left: 10px; }
+    .iro-shuoshuo-feed .iro-shuoshuo-comments-list .children .children { margin-left: 0; padding-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .iro-shuoshuo-feed *, .iro-shuoshuo-feed *::before, .iro-shuoshuo-feed *::after { transition: none !important; animation: none !important; }
+}

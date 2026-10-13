@@ -58,6 +58,7 @@ if (!function_exists('iro_opt_update')) {
 require get_template_directory() . '/user/modules/local-music.php';
 // Shuoshuo timeline + admin, and archive cache flush button
 require get_template_directory() . '/user/modules/shuoshuo.php';
+require get_template_directory() . '/user/modules/shuoshuo-feed.php';
 require get_template_directory() . '/user/modules/archive-cache.php';
 
 $shared_lib_basepath = iro_opt('shared_library_basepath') ? get_template_directory_uri() : (iro_opt('lib_cdn_path', 'https://fastly.jsdelivr.net/gh/mirai-mamori/Sakurairo@') . IRO_VERSION);
@@ -274,6 +275,11 @@ function i18n_templates_name ($translated_name, $original_name) {
             'zh_CN' => '归档模板',
             'zh_TW' => '歸檔模板',
             'ja'    => 'アーカイブページテンプレート',
+        ),
+        'Shuoshuo Template' => array(
+            'zh_CN' => '说说页面模板',
+            'zh_TW' => '說說頁面模板',
+            'ja'    => 'つぶやきページテンプレート',
         ),
     );
     

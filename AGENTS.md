@@ -22,6 +22,8 @@
 
 ## Git 规范
 
+- 为方便向上游提交 PR，每个新功能都从 `preview` 基线单独创建功能分支，只包含该功能的改动。
+- `main` 汇总所有最新更改；`preview` 保留未修改基线，不合入本地功能和规范变更。
 - 新分支使用简洁的功能名称，例如 `nav-shuoshuo-menu`，不使用 `codex/` 前缀。
 - Git 提交的作者（Author）和提交者（Committer）均使用用户身份 `Misaka <xiaoluobo58@gmail.com>`，提交前核对 `git config user.name` 和 `git config user.email`。
 - 不使用 Codex 身份提交，也不添加 Codex 署名或 `Co-authored-by` 信息。

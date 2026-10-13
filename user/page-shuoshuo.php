@@ -6,9 +6,16 @@
  * A paginated shuoshuo feed with comments loaded only when requested.
  */
 
+$title_position = iro_opt('shuoshuo_title_position', 'below_avatar');
+$title_position = in_array($title_position, array('below_avatar', 'beside_name'), true) ? $title_position : 'below_avatar';
+$title_size = iro_opt('shuoshuo_title_size', 'standard');
+$title_size = in_array($title_size, array('small', 'standard', 'large'), true) ? $title_size : 'standard';
+$title_style = iro_opt('shuoshuo_title_style', 'bold');
+$title_style = in_array($title_style, array('light', 'standard', 'bold'), true) ? $title_style : 'bold';
+
 get_header();
 ?>
-<div id="primary" class="content-area iro-shuoshuo-feed" data-ajax-url="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">
+<div id="primary" class="content-area iro-shuoshuo-feed <?php echo esc_attr('iro-shuoshuo-title-position-' . $title_position . ' iro-shuoshuo-title-size-' . $title_size . ' iro-shuoshuo-title-style-' . $title_style); ?>" data-ajax-url="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">
     <main id="main" class="site-main" role="main">
         <?php while (have_posts()) : the_post(); ?>
             <?php if (post_password_required()) : ?>
@@ -42,21 +49,37 @@ get_header();
                 <p class="iro-shuoshuo-status" data-iro-feed-status role="status" aria-live="polite" hidden></p>
                 <div class="iro-shuoshuo-stream entry-content">
                     <?php while ($feed->have_posts()) : $feed->the_post(); ?>
-                        <?php $shuoshuo_id = get_the_ID(); ?>
+                        <?php
+                        $shuoshuo_id = get_the_ID();
+                        $shuoshuo_title = $show_shuoshuo_title ? trim(get_the_title()) : '';
+                        $emotion_code = ltrim((string) get_post_meta($shuoshuo_id, 'emotion', true), '\\');
+                        if (!preg_match('/^[0-9a-f]{4,6}$/i', $emotion_code) || hexdec($emotion_code) > 0x10ffff) {
+                            $emotion_code = 'f86d';
+                        }
+                        $emotion_icon = html_entity_decode('&#x' . $emotion_code . ';', ENT_NOQUOTES, 'UTF-8');
+                        $emotion_color = get_post_meta($shuoshuo_id, 'emotion_color', true) ?: iro_opt('theme_skin_matching', '');
+                        $emotion_style = safecss_filter_attr('background-color: ' . $emotion_color);
+                        ?>
                         <article class="iro-shuoshuo-card" id="shuoshuo-<?php echo esc_attr($shuoshuo_id); ?>">
                             <header class="iro-shuoshuo-meta">
                                 <a class="iro-shuoshuo-avatar" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>" aria-label="<?php echo esc_attr(get_the_author()); ?>">
                                     <?php echo get_avatar(get_the_author_meta('ID'), 48, '', get_the_author(), array('loading' => 'lazy')); ?>
+                                    <span class="iro-shuoshuo-avatar-badge" style="<?php echo esc_attr($emotion_style); ?>" aria-hidden="true"><?php echo esc_html($emotion_icon); ?></span>
                                 </a>
                                 <div>
-                                    <a class="iro-shuoshuo-author" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"><?php echo esc_html(get_the_author()); ?></a>
+                                    <div class="iro-shuoshuo-author-line">
+                                        <a class="iro-shuoshuo-author" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"><?php echo esc_html(get_the_author()); ?></a>
+                                        <?php if ('beside_name' === $title_position && '' !== $shuoshuo_title) : ?>
+                                            <h2 class="iro-shuoshuo-post-title" title="<?php echo esc_attr($shuoshuo_title); ?>"><?php echo esc_html($shuoshuo_title); ?></h2>
+                                        <?php endif; ?>
+                                    </div>
                                     <a class="iro-shuoshuo-time" href="<?php the_permalink(); ?>">
                                         <time datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>"><?php echo esc_html(get_the_date() . ' · ' . get_the_time()); ?></time>
                                     </a>
                                 </div>
                             </header>
-                            <?php if ($show_shuoshuo_title && trim(get_the_title()) !== '') : ?>
-                                <h2 class="iro-shuoshuo-post-title"><?php echo esc_html(get_the_title()); ?></h2>
+                            <?php if ('below_avatar' === $title_position && '' !== $shuoshuo_title) : ?>
+                                <h2 class="iro-shuoshuo-post-title"><?php echo esc_html($shuoshuo_title); ?></h2>
                             <?php endif; ?>
                             <div class="iro-shuoshuo-body"><?php the_content('', false); ?></div>
                             <footer class="iro-shuoshuo-actions">

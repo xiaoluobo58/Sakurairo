@@ -12,7 +12,7 @@
 $reception_background = iro_opt('reception_background');
 ?>
   </div><!-- #content -->
-  <?php comments_template('', true); ?>
+  <?php if (!is_page_template('user/page-shuoshuo.php')) { comments_template('', true); } ?>
 </div><!-- #page Pjax container-->
   <footer id="colophon" class="site-footer" role="contentinfo">
     <div class="site-info" theme-info="Sakurairo v<?php echo esc_html(IRO_VERSION); ?>">

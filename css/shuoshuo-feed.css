@@ -39,6 +39,9 @@ body.dark .iro-shuoshuo-feed {
 .iro-shuoshuo-card { min-width: 0; margin: 0 0 20px; padding: 26px 28px 0; border: 1px solid var(--shuoshuo-line); border-radius: 16px; background: var(--shuoshuo-surface); box-shadow: var(--shuoshuo-shadow); }
 .iro-shuoshuo-meta { display: flex; align-items: center; gap: 12px; min-width: 0; margin-bottom: 18px; }
 .iro-shuoshuo-meta > :last-child { min-width: 0; }
+.iro-shuoshuo-meta > div { flex: 1; }
+.iro-shuoshuo-author-line { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; min-width: 0; }
+.iro-shuoshuo-post-title { flex: 1 1 120px; min-width: 0; overflow: hidden; color: var(--shuoshuo-muted); font-size: 13px; font-weight: 400; line-height: 1.5; text-overflow: ellipsis; white-space: nowrap; }
 .iro-shuoshuo-avatar { flex: 0 0 44px; line-height: 0; }
 .iro-shuoshuo-feed .iro-shuoshuo-avatar img { display: block; width: 44px; height: 44px; margin: 0; border-radius: 50%; object-fit: cover; }
 .iro-shuoshuo-author { display: block; color: var(--shuoshuo-text); font-size: 15px; font-weight: 600; line-height: 1.5; }

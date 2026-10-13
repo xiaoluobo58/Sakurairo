@@ -2859,6 +2859,19 @@ $prefix = 'iro_options';
         'default' => '40'
       ),
 
+      array(
+        'type' => 'subheading',
+        'content' => __('说说页面模板', 'sakurairo_csf'),
+      ),
+
+      array(
+        'id' => 'shuoshuo_show_title',
+        'type' => 'switcher',
+        'title' => __('显示说说标题', 'sakurairo_csf'),
+        'label' => __('默认开启，在说说页面的作者昵称旁以浅色显示标题。', 'sakurairo_csf'),
+        'default' => true,
+      ),
+
     array(
       'type' => 'subheading',
       'content' => __('Bangumi Template Settings','sakurairo_csf'),

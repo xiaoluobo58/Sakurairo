@@ -17,6 +17,7 @@ get_header();
                 <?php
                 $feed_page_id = get_the_ID();
                 $feed_page = isset($_GET['shuoshuo_page']) ? max(1, absint($_GET['shuoshuo_page'])) : 1;
+                $show_shuoshuo_title = iro_opt('shuoshuo_show_title', true);
                 $feed = new WP_Query(array(
                     'post_type'           => 'shuoshuo',
                     'post_status'         => 'publish',
@@ -34,8 +35,6 @@ get_header();
                     <?php endif; ?>
                     <?php if (trim(get_the_content()) !== '') : ?>
                         <div class="iro-shuoshuo-intro"><?php the_content(); ?></div>
-                    <?php else : ?>
-                        <p class="iro-shuoshuo-intro"><?php esc_html_e('把日常的小事，慢慢说给你听。', 'sakurairo'); ?></p>
                     <?php endif; ?>
                     <span class="iro-shuoshuo-count"><?php printf(esc_html__('共 %s 条说说', 'sakurairo'), esc_html(number_format_i18n($feed->found_posts))); ?></span>
                 </header>
@@ -50,7 +49,12 @@ get_header();
                                     <?php echo get_avatar(get_the_author_meta('ID'), 48, '', get_the_author(), array('loading' => 'lazy')); ?>
                                 </a>
                                 <div>
-                                    <a class="iro-shuoshuo-author" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"><?php echo esc_html(get_the_author()); ?></a>
+                                    <div class="iro-shuoshuo-author-line">
+                                        <a class="iro-shuoshuo-author" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"><?php echo esc_html(get_the_author()); ?></a>
+                                        <?php if ($show_shuoshuo_title && trim(get_the_title()) !== '') : ?>
+                                            <span class="iro-shuoshuo-post-title" title="<?php echo esc_attr(get_the_title()); ?>"><?php echo esc_html(get_the_title()); ?></span>
+                                        <?php endif; ?>
+                                    </div>
                                     <a class="iro-shuoshuo-time" href="<?php the_permalink(); ?>">
                                         <time datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>"><?php echo esc_html(get_the_date() . ' · ' . get_the_time()); ?></time>
                                     </a>
